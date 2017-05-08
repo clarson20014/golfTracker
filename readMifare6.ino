@@ -43,6 +43,8 @@ products from Adafruit!
 #define PN532_MOSI (3)
 #define PN532_SS   (4)
 #define PN532_MISO (5)
+//#define rxPin 0
+//#define txPin 1
 int counter;
 
 // If using the breakout or shield with I2C, define just the pins connected
@@ -84,6 +86,11 @@ void setup(void) {
   Serial.println("---Caddie Recommendation---");
   Serial.println("479 Yards, use your 10.0 DEGREE DRIVER");
   Serial.println("");
+  pinMode(13, OUTPUT); //Set the LED pin as an output
+  pinMode(0,INPUT); //Set the RX pin of the arduino as an input
+  pinMode(1,OUTPUT); //Set the TX pin of the arduino as an output
+//  Serial.begin(9600); //Start the UART Serial communication
+  delay(2000); // Wait 2 seconds - this allows the photon to power up as well before the Arduino trying to take commands
 
   nfc.begin();
 
@@ -116,6 +123,7 @@ void loop(void) {
   char recoClub;
   int putts;
   int score;
+	
 
 success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, uid, &uidLength);
   
@@ -150,6 +158,8 @@ recoClub="Driver";
           Serial.println("------- Caddie Tips -------");
           Serial.println("");
           Serial.print("--Hazards--");
+	  Serial.print(13,HIGH);
+          Serial.print(1,
           yardage = 579;
           Serial.print("There is water on the left side starting at approximately ");
           Serial.print(yardage);
