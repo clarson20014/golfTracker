@@ -1,0 +1,45 @@
+//BreakoutBros tutorial
+//Visit www.breakoutbros.com for more information
+//ControlArduinoWifi_Arduino
+ 
+//This tutorial will transmit Serial Data read from the Arduino
+//It will flash the LED once at 1 second and 2 times at 1/4 a second
+ 
+int led1 = D7; 
+ 
+void setup() {
+ 
+  pinMode(led1, OUTPUT);
+  pinMode(0, INPUT);
+  pinMode(1, OUTPUT);
+  digitalWrite(led1, LOW);
+  Serial1.begin(9600);
+ 
+}
+//To communicate to the Arduino we will use the Serial1.write command
+//The data will be sent over the UART to the arduino
+//This will be a simple demo with the data being used to either
+//turn on or turn off the Arduino LED. We will also turn on the 
+//photon LED to mimick this
+void loop() {
+ 
+  digitalWrite(led1, LOW);
+  Serial1.write(0);
+  delay(1000);
+  digitalWrite(led1, HIGH);
+  Serial1.write(1);
+  delay(250);
+  digitalWrite(led1, LOW);
+  Serial1.write(0);
+  delay(250);
+  digitalWrite(led1, HIGH);
+  Serial1.write(1);
+  delay(200);
+  digitalWrite(led1, LOW);
+  Serial1.write(0);
+  delay(1000);
+  digitalWrite(led1, HIGH);
+  Serial1.write(1);
+  delay(1000);
+ 
+}
