@@ -47,7 +47,7 @@ int counter;
 uint8_t playerCard[4] = { 153, 115, 33, 0 };
 uint8_t driverCard[4] = { 53, 123, 88, 220 }; 
 uint8_t threeWoodCard[4] = { 53, 214, 250, 97 }; 
-uint8_t nineIronCard[4] = { 101, 229, 81, 220 }; 
+uint8_t putterCard[4] = { 101, 229, 81, 220 }; 
 uint8_t fiveIronCard[4] = { 213, 210, 89, 220 }; 
 
 
@@ -149,24 +149,50 @@ void handleRfid(uint8_t uid[]) {
         Serial.println("You selected your: Driver");
         Serial.println("This is the recommended club, way to follow your caddie recommendation!");
         Serial.println("This club typically goes 265 yards, it will leave you with 214 yards to the hole");
+	Serial.println("--- Calculating Distance ---");
+	Serial.println("You hit your Driver: 260 Yards!");
+	Serial.println("---Caddie Recommendation---");
+     	Serial.println("219 Yards remaining, use your 3 Wood"); 
+  	Serial.println("Waiting for club selection for SHOT #2 of HOLE #1...");   
+	delay(3000);
       } else {
         boolean isThreeWood = compareRfid(threeWoodCard, uid);
         if (isThreeWood) {
           Serial.println("You selected your: 3 Wood");
-          Serial.println("This is not the recommended club, are you sure?");
-          Serial.println("This club typically goes 225 yards, it will leave you with 254 yards to the hole");
+	  Serial.println("---Caddie Recommendation---");
+          Serial.println("Slight wind from South at 4mph, should not affect your shot.");
+          Serial.println("This club typically goes 225 yards, it will leave you with -6 yards to the hole");
+	  Serial.println("Hit when ready");
+	  Serial.println("--- Calculating Distance ---");
+	  delay(3000);
+	  Serial.println("---Caddie Recommendation---");
+	  Serial.println("You hit your 3 Wood: 225 Yards!");
+	  Serial.println("-6 Yards remaining, use your Putter"); 
+	  Serial.println("Waiting for club selection for SHOT #3 of HOLE #1...");    
+	  delay(3000);
         } else {
           boolean isFiveIron = compareRfid(fiveIronCard, uid);
           if (isFiveIron) {
             Serial.println("You selected your: 5 Iron");
-            Serial.println("This is not the recommended club, are you sure?");
-            Serial.println("This club typically goes 202 yards, it will leave you with 277 yards to the hole");
+            Serial.println("---Caddie Recommendation---");
+	    Serial.println("Slight wind from South at 3mph, should not affect your shot.");
+	    Serial.println("Temperature is 72 degrees fahrenheit, should not affect your shot.");
+            Serial.println("This club typically goes 202 yards, it will leave you with 17 yards to the hole");
+	    Serial.println("Hit when ready");
+	    delay(3000);
          } else {
-          boolean isNineIron = compareRfid(nineIronCard, uid);
-          if (isNineIron) {
-            Serial.println("You selected your: 9 Iron");
-            Serial.println("This is not the recommended club, are you sure? If you aren't going to take my advice, why did you invest in this thing?");
-            Serial.println("This club typically goes 152 yards, it will leave you with 327 yards to the hole");
+          boolean isPutter = compareRfid(putterCard, uid);
+          if (isPutter) {
+            Serial.println("You selected your: Putter");
+            Serial.print("Please enter the number of putts:");
+	    delay(2000);
+	    Serial.println("2");
+            Serial.println("Par was 4, you used 5 strokes, +1 Bogey");
+	    delay(3000);
+	    Serial.println("---Caddie Recommendation---");
+	    Serial.println("Welcome to Hole #2");
+     	    Serial.println("219 Yard par 3, use your 5 Iron"); 
+      	    Serial.println("Waiting for club selection for SHOT #2 of HOLE #1...");     
           }
          }
       }
