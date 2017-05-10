@@ -3,8 +3,8 @@ Using Arduino with an RFID Reader (PN532) to track the use of various golf clubs
 
 The solution includes an Adafruit PN532 RFID/NFC Shield RFID Reader, with various RFID chips configured for a particular golf club. 
 
-Why I built this:
-Played Worldwide - 61 Million Play Regularly 
+<strong>Why I built this:</strong>
+<li>Played Worldwide - 61 Million Play Regularly 
 35 Million in United States
 13.6 Million in Asia
 6.9 Million in Europe
@@ -17,7 +17,7 @@ $68.8 Billion - spent on golf annually
 $5.6 Billion - spent on golf related ‘stuff’
 I like golf, I like data and technology, I like golfing well
 
-How it was built:
+<strong>How it was built:</strong>
 Hardware
 SparkFun RedBoard - Programmed with Arduino
 Adafruit PN532 RFID/NFC Shield 
@@ -30,7 +30,7 @@ Arduino Software
 Build.particle.io
 Particle Iphone App
 
-<strong>Future Ideas for Enhancements:
+<strong>Future Ideas for Enhancements:</strong>
 GPS - tracking shot distance
 Interface with Weather - effects shot distance
 Temperature
